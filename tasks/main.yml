@@ -8,7 +8,7 @@
   register: tigervnc_server_check_status_of_package
 
 - name: install requirements
-  command: dnf install --allowerasing -y "{{ item }}"
+  command: dnf groupinstall --allowerasing -y "{{ item }}"
   args:
     warn: no
   loop: "{{ tigervnc_server_requirements }}"
