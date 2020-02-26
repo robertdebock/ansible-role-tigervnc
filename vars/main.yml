@@ -3,10 +3,10 @@
 _tigervnc_server_requirements:
   '7':
     - "@GNOME Desktop"
-    - "@Graphical Administration Tools"
+    # - "@Graphical Administration Tools"
   '8':
     - "@Workstation"
-    - "@Server with GUI"
+    # - "@Server with GUI"
 
 tigervnc_server_requirements: "{{ _tigervnc_server_requirements[ansible_distribution_major_version] }}"
 
