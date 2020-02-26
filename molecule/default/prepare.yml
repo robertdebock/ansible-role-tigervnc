@@ -7,8 +7,6 @@
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.core_dependencies
-    - role: robertdebock.epel
-    - role: robertdebock.hostname
     - role: robertdebock.users
       users_group_list:
         - name: vncgroup

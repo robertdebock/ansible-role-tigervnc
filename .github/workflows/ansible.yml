@@ -11,7 +11,7 @@ on:
       - '*'
   pull_request:
   schedule:
-    - cron: '7 4 20 * *'
+    - cron: '24 1 20 * *'
 
 jobs:
   lint:
@@ -32,29 +32,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - image: "alpine"
-            tag: "latest"
-          - image: "alpine"
-            tag: "edge"
-          - image: "debian"
-            tag: "latest"
-          - image: "debian"
-            tag: "testing"
-          - image: "debian"
-            tag: "unstable"
           - image: "centos"
-            tag: "7"
-          - image: "centos"
-            tag: "latest"
-          - image: "fedora"
-            tag: "30"
-          - image: "fedora"
-            tag: "latest"
-          - image: "fedora"
-            tag: "rawhide"
-          - image: "opensuse"
-            tag: "latest"
-          - image: "ubuntu"
             tag: "latest"
     steps:
       - name: checkout

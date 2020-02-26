@@ -5,7 +5,7 @@ Install and configure tigervnc_server on your system.
 
 |Travis|GitHub|Quality|Downloads|
 |------|------|-------|---------|
-|[![travis](https://travis-ci.org/robertdebock/ansible-role-tigervnc_server.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-tigervnc_server)|[![github](https://github.com/robertdebock/ansible-role-tigervnc_server/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-tigervnc_server/actions)|![quality](https://img.shields.io/ansible/quality/)|![downloads](https://img.shields.io/ansible/role/d/)|
+|[![travis](https://travis-ci.org/robertdebock/ansible-role-tigervnc_server.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-tigervnc_server)|[![github](https://github.com/robertdebock/ansible-role-tigervnc_server/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-tigervnc_server/actions)|![quality](https://img.shields.io/ansible/quality/46853)|![downloads](https://img.shields.io/ansible/role/d/46853)|
 
 Example Playbook
 ----------------
@@ -32,8 +32,7 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
 
   roles:
     - role: robertdebock.bootstrap
-    - role: robertdebock.epel
-    - role: robertdebock.hostname
+    - role: robertdebock.core_dependencies
     - role: robertdebock.users
       users_group_list:
         - name: vncgroup
@@ -57,6 +56,10 @@ For verification `molecule/resources/verify.yml` run after the role has been app
     - name: test port 5901
       wait_for:
         port: 5901
+
+    - name: show testing instruction
+      debug:
+        msg: "Please run: vncviewer {{ ansible_default_ipv4.address }}:5901"
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -89,6 +92,8 @@ The following roles can be installed to ensure all requirements are met, using `
 ```yaml
 ---
 - robertdebock.bootstrap
+- robertdebock.core_dependencies
+- robertdebock.users
 
 ```
 
@@ -108,12 +113,7 @@ This role has been tested on these [container images](https://hub.docker.com/):
 
 |container|tags|
 |---------|----|
-|alpine|all|
-|debian|all|
-|el|7, 8|
-|fedora|all|
-|opensuse|all|
-|ubuntu|bionic|
+|el|8|
 
 The minimum version of Ansible required is 2.7 but tests have been done to:
 

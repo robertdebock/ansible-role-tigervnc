@@ -1,19 +1,40 @@
 ---
 # tasks file for tigervnc_server
-- name: install requirements
+- name: check status of package
   package:
-    name: "{{ tigervnc_server_requirements }}"
+    name: coreutils
     state: present
+  check_mode: yes
+  register: tigervnc_server_check_status_of_package
+
+- name: install requirements
+  command: dnf install -allowerasing -y "{{ item }}"
+  args:
+    warn: no
+  loop: "{{ tigervnc_server_requirements }}"
+  when:
+    - tigervnc_server_check_status_of_package is changed
   register: tigervnc_server_install_requirements
+  async: 900
+  poll: 0
   until: tigervnc_server_install_requirements is succeeded
   retries: 3
+
+- name: check install requirements
+  async_status:
+    jid: "{{ tigervnc_server_install_requirements.ansible_job_id }}"
+  when:
+    - tigervnc_server_check_status_of_package is changed
+  register: tigervnc_server_check_install_requirements
+  until: tigervnc_server_check_install_requirements is finished
+  retries: 30
 
 - name: install software
   package:
     name: "{{ tigervnc_server_packages }}"
     state: present
-  register: xrpd_install_software
-  until: xrpd_install_software is succeeded
+  register: tigervnc_server_install_software
+  until: tigervnc_server_install_software is succeeded
   retries: 3
 
 - name: generate vnc password
@@ -30,15 +51,15 @@
   notify:
     - systemctl daemon-reload
 
-- name: place xstartup
-  copy:
-    src: xstartup
-    dest: /home/{{ tigervnc_server_username }}/.vnc/xstartup
-    owner: "{{ tigervnc_server_username }}"
-    group: vncgroup
-    mode: "0755"
-  notify:
-    - restart tigervnc-server
+# - name: place xstartup
+#   copy:
+#     src: xstartup
+#     dest: /home/{{ tigervnc_server_username }}/.vnc/xstartup
+#     owner: "{{ tigervnc_server_username }}"
+#     group: vncgroup
+#     mode: "0755"
+#   notify:
+#     - restart tigervnc-server
 
 - name: start software
   service:
