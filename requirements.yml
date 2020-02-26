@@ -1,5 +1,6 @@
 ---
 - robertdebock.bootstrap
+- robertdebock.core_dependencies
 - robertdebock.epel
 - robertdebock.hostname
 - robertdebock.users

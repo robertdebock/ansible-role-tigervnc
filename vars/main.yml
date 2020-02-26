@@ -3,7 +3,8 @@
 tigervnc_server_requirements:
   - mate-desktop
   - mate-session-manager
-  - gdm
+  - marco
+  - xterm
 
 tigervnc_server_packages:
   - tigervnc-server

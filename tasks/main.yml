@@ -32,12 +32,11 @@
 
 - name: place xstartup
   copy:
-    content: |
-      /usr/bin/gdm &
-      /usr/bin/mate-session &
+    src: xstartup
     dest: /home/{{ tigervnc_server_username }}/.vnc/xstartup
+    owner: "{{ tigervnc_server_username }}"
+    group: vncgroup
     mode: "0755"
-  become: true
   notify:
     - restart tigervnc-server
 
