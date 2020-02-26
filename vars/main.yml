@@ -1,0 +1,11 @@
+---
+# vars file for tigervnc_server
+tigervnc_server_requirements:
+  - mate-desktop
+  - mate-session-manager
+  - gdm
+
+tigervnc_server_packages:
+  - tigervnc-server
+
+tigervnc_server_service: vncserver-{{ tigervnc_server_username }}@:1

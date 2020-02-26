@@ -1,0 +1,48 @@
+---
+# tasks file for tigervnc_server
+- name: install requirements
+  package:
+    name: "{{ tigervnc_server_requirements }}"
+    state: present
+  register: tigervnc_server_install_requirements
+  until: tigervnc_server_install_requirements is succeeded
+  retries: 3
+
+- name: install software
+  package:
+    name: "{{ tigervnc_server_packages }}"
+    state: present
+  register: xrpd_install_software
+  until: xrpd_install_software is succeeded
+  retries: 3
+
+- name: generate vnc password
+  shell: set -o pipefail ; printf "n\n{{ tigervnc_server_password }}\n{{ tigervnc_server_password }}\n\n" | vncpasswd
+  args:
+    creates: /home/{{ tigervnc_server_username }}/.vnc/passwd
+  become: yes
+  become_user: "{{ tigervnc_server_username }}"
+
+- name: place service unit
+  template:
+    src: vncserver.service.j2
+    dest: /etc/systemd/system/vncserver-{{ tigervnc_server_username }}@.service
+  notify:
+    - systemctl daemon-reload
+
+- name: place xstartup
+  copy:
+    content: |
+      /usr/bin/gdm &
+      /usr/bin/mate-session &
+    dest: /home/{{ tigervnc_server_username }}/.vnc/xstartup
+    mode: "0755"
+  become: true
+  notify:
+    - restart tigervnc-server
+
+- name: start software
+  service:
+    name: "{{ tigervnc_server_service }}"
+    state: started
+    enabled: yes
