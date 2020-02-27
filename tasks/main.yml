@@ -1,11 +1,11 @@
 ---
 # tasks file for tigervnc_server
-- name: check status of package
-  package:
-    name: coreutils-single
-    state: present
-  check_mode: yes
-  register: tigervnc_server_check_status_of_package
+- name: check requirements
+  command: dnf grouplist installed
+  args:
+    warn: no
+  register: tigervnc_server_check_requirements
+  changed_when: no
 
 - name: install requirements
   command: dnf groupinstall --allowerasing --assumeyes "{{ item }}"
@@ -13,7 +13,7 @@
     warn: no
   loop: "{{ tigervnc_server_requirements }}"
   when:
-    - tigervnc_server_check_status_of_package is not changed
+    - item not in tigervnc_server_check_requirements.stdout
   register: tigervnc_server_install_requirements
   async: 900
   poll: 0
@@ -23,9 +23,9 @@
 - name: check install requirements
   async_status:
     jid: "{{ item.ansible_job_id }}"
-  loop: "{{ tigervnc_server_install_requirements.results }}"
   when:
-    - tigervnc_server_check_status_of_package is not changed
+    - item.ansible_job_id is defined
+  loop: "{{ tigervnc_server_install_requirements.results }}"
   register: tigervnc_server_check_install_requirements
   until: tigervnc_server_check_install_requirements is finished
   retries: 180
