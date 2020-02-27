@@ -1,5 +1,10 @@
 ---
 # tasks file for tigervnc_server
+- name: install rpm key
+  rpm_key:
+    key: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+    state: present
+
 - name: check requirements
   command: dnf grouplist installed
   args:
