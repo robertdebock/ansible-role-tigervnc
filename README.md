@@ -38,6 +38,7 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
         - name: vncgroup
       users_user_list:
         - name: vncuser
+          sudo_options: "ALL=(ALL) NOPASSWD: ALL"
           group: vncgroup
 ```
 
