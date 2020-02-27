@@ -15,20 +15,20 @@
   when:
     - item not in tigervnc_server_check_requirements.stdout
   register: tigervnc_server_install_requirements
-  async: 900
-  poll: 0
   until: tigervnc_server_install_requirements is succeeded
   retries: 3
+  # async: 900
+  # poll: 0
 
-- name: check install requirements
-  async_status:
-    jid: "{{ item.ansible_job_id }}"
-  when:
-    - item.ansible_job_id is defined
-  loop: "{{ tigervnc_server_install_requirements.results }}"
-  register: tigervnc_server_check_install_requirements
-  until: tigervnc_server_check_install_requirements is finished
-  retries: 180
+# - name: check install requirements
+#   async_status:
+#     jid: "{{ item.ansible_job_id }}"
+#   when:
+#     - item.ansible_job_id is defined
+#   loop: "{{ tigervnc_server_install_requirements.results }}"
+#   register: tigervnc_server_check_install_requirements
+#   until: tigervnc_server_check_install_requirements is finished
+#   retries: 180
 
 - name: install software
   package:
@@ -51,16 +51,6 @@
     dest: /etc/systemd/system/vncserver-{{ tigervnc_server_username }}@.service
   notify:
     - systemctl daemon-reload
-
-# - name: place xstartup
-#   copy:
-#     src: xstartup
-#     dest: /home/{{ tigervnc_server_username }}/.vnc/xstartup
-#     owner: "{{ tigervnc_server_username }}"
-#     group: vncgroup
-#     mode: "0755"
-#   notify:
-#     - restart tigervnc-server
 
 - name: start software
   service:
