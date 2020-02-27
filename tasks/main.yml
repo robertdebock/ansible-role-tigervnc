@@ -1,10 +1,5 @@
 ---
 # tasks file for tigervnc_server
-- name: install rpm key
-  rpm_key:
-    key: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
-    state: present
-
 - name: check requirements
   command: dnf grouplist installed
   args:
@@ -22,18 +17,6 @@
   register: tigervnc_server_install_requirements
   until: tigervnc_server_install_requirements is succeeded
   retries: 3
-  # async: 900
-  # poll: 0
-
-# - name: check install requirements
-#   async_status:
-#     jid: "{{ item.ansible_job_id }}"
-#   when:
-#     - item.ansible_job_id is defined
-#   loop: "{{ tigervnc_server_install_requirements.results }}"
-#   register: tigervnc_server_check_install_requirements
-#   until: tigervnc_server_check_install_requirements is finished
-#   retries: 180
 
 - name: install software
   package:
