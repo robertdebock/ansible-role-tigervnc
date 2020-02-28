@@ -1,14 +1,14 @@
 ---
 # tasks file for tigervnc_server
 - name: check requirements
-  command: "{{ ansible_pkg_mgr }} grouplist installed
+  command: "{{ ansible_pkg_mgr }} grouplist installed"
   args:
     warn: no
   register: tigervnc_server_check_requirements
   changed_when: no
 
 - name: install requirements
-  command: "{{ ansible_pkg_mgr }} groupinstall --allowerasing --assumeyes "{{ item }}"
+  command: "{{ ansible_pkg_mgr }} groupinstall --allowerasing --assumeyes {{ item }}"
   args:
     warn: no
   loop: "{{ tigervnc_server_requirements }}"
