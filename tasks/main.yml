@@ -8,7 +8,7 @@
   changed_when: no
 
 - name: install requirements
-  command: "{{ ansible_pkg_mgr }} groupinstall {{ tigervnc_server_installation_options }} --assumeyes {{ item }}"
+  command: "{{ ansible_pkg_mgr }} groupinstall {{ tigervnc_server_installation_options | default(omit) }} --assumeyes {{ item }}"
   args:
     warn: no
   loop: "{{ tigervnc_server_requirements }}"
