@@ -1,11 +1,11 @@
 ---
-# handlers file for tigervnc_server
+# handlers file for tigervnc
 - name: systemctl daemon-reload
   systemd:
     daemon_reload: yes
 
 - name: restart tigervnc-server
   service:
-    name: "{{ tigervnc_server_service }}"
+    name: "{{ tigervnc_service }}"
     state: restarted
 

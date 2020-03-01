@@ -1,6 +1,6 @@
 ---
-# vars file for tigervnc_server
-tigervnc_server_packages:
+# vars file for tigervnc
+tigervnc_packages:
   - tigervnc-server
 
-tigervnc_server_service: vncserver-{{ tigervnc_server_username }}@:1
+tigervnc_service: vncserver-{{ tigervnc_username }}@:1

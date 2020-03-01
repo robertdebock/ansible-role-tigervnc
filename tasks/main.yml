@@ -1,29 +1,29 @@
 ---
-# tasks file for tigervnc_server
+# tasks file for tigervnc
 - name: install software
   package:
-    name: "{{ tigervnc_server_packages }}"
+    name: "{{ tigervnc_packages }}"
     state: present
-  register: tigervnc_server_install_software
-  until: tigervnc_server_install_software is succeeded
+  register: tigervnc_install_software
+  until: tigervnc_install_software is succeeded
   retries: 3
 
 - name: generate vnc password
-  shell: set -o pipefail ; printf "n\n{{ tigervnc_server_password }}\n{{ tigervnc_server_password }}\n\n" | vncpasswd
+  shell: set -o pipefail ; printf "n\n{{ tigervnc_password }}\n{{ tigervnc_password }}\n\n" | vncpasswd
   args:
-    creates: /home/{{ tigervnc_server_username }}/.vnc/passwd
+    creates: /home/{{ tigervnc_username }}/.vnc/passwd
   become: yes
-  become_user: "{{ tigervnc_server_username }}"
+  become_user: "{{ tigervnc_username }}"
 
 - name: place service unit
   template:
     src: vncserver.service.j2
-    dest: /etc/systemd/system/vncserver-{{ tigervnc_server_username }}@.service
+    dest: /etc/systemd/system/vncserver-{{ tigervnc_username }}@.service
   notify:
     - systemctl daemon-reload
 
 - name: start software
   service:
-    name: "{{ tigervnc_server_service }}"
+    name: "{{ tigervnc_service }}"
     state: started
     enabled: yes

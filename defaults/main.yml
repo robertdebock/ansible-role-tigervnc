@@ -1,10 +1,10 @@
 ---
-# defaults file for tigervnc_server
+# defaults file for tigervnc
 
 # The tigervnc-server runs under a specific user. This user is created in
 # `molecule/default/prepare.yml`. You can pick an existing user to create one
 # using [ansible-role-users](https://galaxy.ansible.com/robertdebock/users)
-tigervnc_server_username: vncuser
+tigervnc_username: vncuser
 
 # Connecting to tigervnc-server required a password.
-tigervnc_server_password: vncpass
+tigervnc_password: vncpass

@@ -1,11 +1,11 @@
-tigervnc_server
+tigervnc
 =========
 
-Install and configure tigervnc_server on your system.
+Install and configure tigervnc on your system.
 
 |Travis|GitHub|Quality|Downloads|
 |------|------|-------|---------|
-|[![travis](https://travis-ci.org/robertdebock/ansible-role-tigervnc_server.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-tigervnc_server)|[![github](https://github.com/robertdebock/ansible-role-tigervnc_server/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-tigervnc_server/actions)|![quality](https://img.shields.io/ansible/quality/46853)|![downloads](https://img.shields.io/ansible/role/d/46853)|
+|[![travis](https://travis-ci.org/robertdebock/ansible-role-tigervnc.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-tigervnc)|[![github](https://github.com/robertdebock/ansible-role-tigervnc/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-tigervnc/actions)|![quality](https://img.shields.io/ansible/quality/46853)|![downloads](https://img.shields.io/ansible/role/d/46853)|
 
 Example Playbook
 ----------------
@@ -19,7 +19,7 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
   gather_facts: yes
 
   roles:
-    - role: robertdebock.tigervnc_server
+    - role: robertdebock.tigervnc
 ```
 
 The machine may need to be prepared using `molecule/resources/prepare.yml`:
@@ -71,15 +71,15 @@ Role Variables
 These variables are set in `defaults/main.yml`:
 ```yaml
 ---
-# defaults file for tigervnc_server
+# defaults file for tigervnc
 
 # The tigervnc-server runs under a specific user. This user is created in
 # `molecule/default/prepare.yml`. You can pick an existing user to create one
 # using [ansible-role-users](https://galaxy.ansible.com/robertdebock/users)
-tigervnc_server_username: vncuser
+tigervnc_username: vncuser
 
 # Connecting to tigervnc-server required a password.
-tigervnc_server_password: vncpass
+tigervnc_password: vncpass
 ```
 
 Requirements
@@ -104,7 +104,7 @@ Context
 This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
 
 Here is an overview of related roles:
-![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/tigervnc_server.png "Dependency")
+![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/tigervnc.png "Dependency")
 
 
 Compatibility
@@ -127,9 +127,9 @@ The minimum version of Ansible required is 2.7 but tests have been done to:
 Testing
 -------
 
-[Unit tests](https://travis-ci.org/robertdebock/ansible-role-tigervnc_server) are done on every commit, pull request, release and periodically.
+[Unit tests](https://travis-ci.org/robertdebock/ansible-role-tigervnc) are done on every commit, pull request, release and periodically.
 
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-tigervnc_server/issues)
+If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-tigervnc/issues)
 
 Testing is done using [Tox](https://tox.readthedocs.io/en/latest/) and [Molecule](https://github.com/ansible/molecule):
 
