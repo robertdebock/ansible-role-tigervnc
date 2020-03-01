@@ -1,23 +1,5 @@
 ---
 # tasks file for tigervnc_server
-- name: check requirements
-  command: "{{ ansible_pkg_mgr }} grouplist installed"
-  args:
-    warn: no
-  register: tigervnc_server_check_requirements
-  changed_when: no
-
-- name: install requirements
-  command: "{{ ansible_pkg_mgr }} groupinstall {{ tigervnc_server_installation_options }} {{ item }}"
-  args:
-    warn: no
-  loop: "{{ tigervnc_server_requirements }}"
-  when:
-    - item not in tigervnc_server_check_requirements.stdout
-  register: tigervnc_server_install_requirements
-  until: tigervnc_server_install_requirements is succeeded
-  retries: 3
-
 - name: install software
   package:
     name: "{{ tigervnc_server_packages }}"

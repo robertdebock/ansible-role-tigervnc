@@ -1,19 +1,5 @@
 ---
 # vars file for tigervnc_server
-_tigervnc_server_requirements:
-  '7':
-    - "GNOME Desktop"
-  '8':
-    - "Workstation"
-
-tigervnc_server_requirements: "{{ _tigervnc_server_requirements[ansible_distribution_major_version] }}"
-
-_tigervnc_server_installation_options:
-  '7': "--assumeyes"
-  '8': "--assumeyes --allowerasing"
-
-tigervnc_server_installation_options: "{{ _tigervnc_server_installation_options[ansible_distribution_major_version] }}"
-
 tigervnc_server_packages:
   - tigervnc-server
 
