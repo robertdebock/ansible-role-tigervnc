@@ -18,7 +18,7 @@
 - name: place service unit
   template:
     src: vncserver.service.j2
-    dest: /etc/systemd/system/vncserver-{{ tigervnc_username }}@.service
+    dest: /etc/systemd/system/vncserver@.service
   notify:
     - systemctl daemon-reload
 
