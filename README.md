@@ -5,7 +5,7 @@ Install and configure tigervnc on your system.
 
 |Travis|GitHub|Quality|Downloads|
 |------|------|-------|---------|
-|[![travis](https://travis-ci.org/robertdebock/ansible-role-tigervnc.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-tigervnc)|[![github](https://github.com/robertdebock/ansible-role-tigervnc/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-tigervnc/actions)|![quality](https://img.shields.io/ansible/quality/46853)|![downloads](https://img.shields.io/ansible/role/d/46853)|
+|[![travis](https://travis-ci.org/robertdebock/ansible-role-tigervnc.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-tigervnc)|[![github](https://github.com/robertdebock/ansible-role-tigervnc/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-tigervnc/actions)|![quality](https://img.shields.io/ansible/quality/46936)|![downloads](https://img.shields.io/ansible/role/d/46936)|
 
 Example Playbook
 ----------------
@@ -33,6 +33,7 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.core_dependencies
+    - role: robertdebock.desktop
     - role: robertdebock.users
       users_group_list:
         - name: vncgroup
@@ -73,10 +74,12 @@ These variables are set in `defaults/main.yml`:
 ---
 # defaults file for tigervnc
 
-# The tigervnc-server runs under a specific user. This user is created in
-# `molecule/default/prepare.yml`. You can pick an existing user to create one
-# using [ansible-role-users](https://galaxy.ansible.com/robertdebock/users)
+# The tigervnc-server runs under a specific user and group. This user is
+# created in `molecule/default/prepare.yml`. You can pick an existing
+# user to create one using
+# [ansible-role-users](https://galaxy.ansible.com/robertdebock/users)
 tigervnc_username: vncuser
+tigervnc_groupname: vncgroup
 
 # Connecting to tigervnc-server required a password.
 tigervnc_password: vncpass
@@ -94,6 +97,7 @@ The following roles can be installed to ensure all requirements are met, using `
 ---
 - robertdebock.bootstrap
 - robertdebock.core_dependencies
+- robertdebock.desktop
 - robertdebock.users
 
 ```
@@ -114,7 +118,7 @@ This role has been tested on these [container images](https://hub.docker.com/):
 
 |container|tags|
 |---------|----|
-|el|7, 8|
+|el|7|
 
 The minimum version of Ansible required is 2.7 but tests have been done to:
 

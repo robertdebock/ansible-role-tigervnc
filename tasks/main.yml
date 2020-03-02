@@ -9,7 +9,7 @@
   retries: 3
 
 - name: generate vnc password
-  shell: set -o pipefail ; printf "n\n{{ tigervnc_password }}\n{{ tigervnc_password }}\n\n" | vncpasswd
+  shell: set -o pipefail ; printf "{{ tigervnc_password }}\n{{ tigervnc_password }}\n" | vncpasswd
   args:
     creates: /home/{{ tigervnc_username }}/.vnc/passwd
   become: yes

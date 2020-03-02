@@ -3,5 +3,5 @@
 # Ansible managed
 #
 repository:
-  description: Install and configure tigervnc_server on your system.
+  description: Install and configure tigervnc on your system.
   homepage: https://robertdebock.nl/
