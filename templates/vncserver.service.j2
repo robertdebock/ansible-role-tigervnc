@@ -1,18 +1,14 @@
 {{ ansible_managed | comment }}
- 
 [Unit]
 Description=Remote desktop service (VNC)
 After=syslog.target network.target
 
 [Service]
-User={{ tigervnc_username }}
-Group={{ tigervnc_groupname }}
-
-Type=simple
-
+Type=forking
 # Clean any existing files in /tmp/.X11-unix environment
 ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
-ExecStart=/usr/bin/vncserver %i
+ExecStart=/usr/sbin/runuser -l {{ tigervnc_username }} -c "/usr/bin/vncserver %i"
+PIDFile=/home/{{ tigervnc_username }}/.vnc/%H%i.pid
 ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
 
 [Install]
