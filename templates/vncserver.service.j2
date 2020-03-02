@@ -5,14 +5,14 @@ Description=Remote desktop service (VNC)
 After=syslog.target network.target
 
 [Service]
-User={{ vncserver_username }}
-Group={{ vncsererver_groupname }}
+User={{ tigervnc_username }}
+Group={{ tigervnc_groupname }}
 
 Type=simple
 
 # Clean any existing files in /tmp/.X11-unix environment
 ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
-ExecStart=/usr/bin/vncserver_wrapper {{ tigervnc_username }} %i
+ExecStart=/usr/bin/vncserver %i
 ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
 
 [Install]
