@@ -3,3 +3,8 @@
 - name: systemctl daemon-reload
   systemd:
     daemon_reload: yes
+
+- name: restart tigervnc
+  service:
+    name: tigervnc
+    state: restarted
