@@ -3,4 +3,4 @@
 tigervnc_packages:
   - tigervnc-server
 
-tigervnc_service: vncserver@:1
+tigervnc_service: "vncserver@:1"
