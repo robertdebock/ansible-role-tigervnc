@@ -15,6 +15,13 @@
   become: yes
   become_user: "{{ tigervnc_username }}"
 
+- name: place xvncstartup
+  copy:
+    src: xstartup
+    dest: /home/{{ tigervnc_username }}/.vnc/xstartup
+  notify:
+    - restart tigervnc
+
 - name: place service unit
   template:
     src: vncserver.service.j2
