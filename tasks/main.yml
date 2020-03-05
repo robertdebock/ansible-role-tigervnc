@@ -19,6 +19,8 @@
   copy:
     src: xstartup
     dest: /home/{{ tigervnc_username }}/.vnc/xstartup
+    owner: "{{ tigervnc_username }}"
+    mode: "0755"
   notify:
     - restart tigervnc
 
