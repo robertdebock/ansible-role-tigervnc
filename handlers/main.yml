@@ -8,3 +8,4 @@
   service:
     name: tigervnc
     state: restarted
+    daemon_reload: yes

@@ -31,17 +31,9 @@
   notify:
     - systemctl daemon-reload
 
-- name: flush handlers
-  meta: flush_handlers
-
-- name: populate service facts
-  service_facts:
-
-- debug:
-    var: ansible_facts.services
-
 - name: start software
   service:
     name: "{{ tigervnc_service }}"
     state: started
     enabled: yes
+    daemon-reload: yes
