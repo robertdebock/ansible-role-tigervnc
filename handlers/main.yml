@@ -6,6 +6,6 @@
 
 - name: restart tigervnc
   service:
-    name: tigervnc
+    name: "{{ tigervnc_service }}"
     state: restarted
     daemon_reload: yes
