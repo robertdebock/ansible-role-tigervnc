@@ -11,7 +11,7 @@ on:
       - '*'
   pull_request:
   schedule:
-    - cron: '12 4 20 * *'
+    - cron: '37 8 20 * *'
 
 jobs:
   lint:
@@ -34,6 +34,8 @@ jobs:
         config:
           - image: "centos"
             tag: "7"
+          - image: "centos"
+            tag: "latest"
           - image: "fedora"
             tag: "30"
           - image: "fedora"
