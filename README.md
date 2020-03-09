@@ -33,14 +33,6 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.core_dependencies
-    - role: robertdebock.desktop
-    - role: robertdebock.users
-      users_group_list:
-        - name: vncgroup
-      users_user_list:
-        - name: vncuser
-          sudo_options: "ALL=(ALL) NOPASSWD: ALL"
-          group: vncgroup
 ```
 
 For verification `molecule/resources/verify.yml` run after the role has been applied.
@@ -97,8 +89,6 @@ The following roles can be installed to ensure all requirements are met, using `
 ---
 - robertdebock.bootstrap
 - robertdebock.core_dependencies
-- robertdebock.desktop
-- robertdebock.users
 
 ```
 
