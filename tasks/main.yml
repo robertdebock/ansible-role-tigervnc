@@ -33,8 +33,21 @@
     - systemctl daemon-reload
 
 - name: start software
-  service:
-    name: "{{ tigervnc_service }}"
-    state: started
-    enabled: yes
-    daemon-reload: yes
+  block:
+    - name: use service
+      service:
+        name: "{{ tigervnc_service }}"
+        state: started
+        enabled: yes
+        daemon-reload: yes
+  rescue:
+    - name: collect information
+      command: "{{ item }}"
+      register: tigervnc_collect_information
+      loop:
+        - "systemctl status {{ tigervnc_service }}"
+        - "journalctl -xe"
+    - name: show collected information
+      debug:
+        msg: "{{ item }}"
+      loop: "{{ tigervnc_collect_information.results }}"
