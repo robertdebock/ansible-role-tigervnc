@@ -11,7 +11,7 @@ on:
       - '*'
   pull_request:
   schedule:
-    - cron: '37 8 20 * *'
+    - cron: '53 5 20 * *'
 
 jobs:
   lint:
@@ -32,6 +32,12 @@ jobs:
       fail-fast: false
       matrix:
         config:
+          - image: "debian"
+            tag: "latest"
+          - image: "debian"
+            tag: "testing"
+          - image: "debian"
+            tag: "unstable"
           - image: "centos"
             tag: "7"
           - image: "centos"
@@ -42,6 +48,10 @@ jobs:
             tag: "latest"
           - image: "fedora"
             tag: "rawhide"
+          - image: "ubuntu"
+            tag: "latest"
+          - image: "ubuntu"
+            tag: "xenial"
     steps:
       - name: checkout
         uses: actions/checkout@v2
