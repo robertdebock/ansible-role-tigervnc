@@ -12,6 +12,7 @@
   shell: set -o pipefail ; printf "{{ tigervnc_password }}\n{{ tigervnc_password }}\n" | vncpasswd
   args:
     creates: /home/{{ tigervnc_username }}/.vnc/passwd
+    executable: /bin/bash
   become: yes
   become_user: "{{ tigervnc_username }}"
 
