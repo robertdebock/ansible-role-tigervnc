@@ -9,7 +9,6 @@ User={{ tigervnc_username }}
 ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
 ExecStart=/usr/bin/vncserver %i
 ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
-PAMName=login
 
 [Install]
 WantedBy=multi-user.target
