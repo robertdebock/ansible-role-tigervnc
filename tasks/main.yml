@@ -17,13 +17,21 @@
   become_user: "{{ tigervnc_username }}"
 
 - name: place xvncstartup
-  copy:
+  template:
     src: xstartup
-    dest: /home/{{ tigervnc_username }}/.vnc/xstartup
+    dest: "/home/{{ tigervnc_username }}/.vnc/xstartup"
     owner: "{{ tigervnc_username }}"
     mode: "0755"
   notify:
     - restart tigervnc
+
+- name: place .Xclients
+  copy:
+    content: "{{ tigervnc_desktop_session }}"
+    dest: "/home/{{ tigervnc_username }}/.Xclients"
+    owner: "{{ tigervnc_username }}"
+    group: "{{ tigervnc_groupname }}"
+    mode: "a+x"
 
 - name: place service unit
   template:
