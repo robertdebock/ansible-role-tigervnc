@@ -30,7 +30,7 @@
     content: "{{ tigervnc_desktop_session }}"
     dest: "/home/{{ tigervnc_username }}/.Xclients"
     owner: "{{ tigervnc_username }}"
-    group: "{{ tigervnc_group }}"
+    group: "{{ tigervnc_groupname }}"
     mode: "a+x"
 
 - name: place service unit
