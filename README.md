@@ -33,7 +33,7 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.core_dependencies
-    - role: robertdebock.desktop
+    - role: robertdebock.gnome
     - role: robertdebock.users
       users_group_list:
         - name: vncgroup
@@ -83,6 +83,9 @@ tigervnc_groupname: vncgroup
 
 # Connecting to tigervnc-server required a password.
 tigervnc_password: vncpass
+
+# Desktop session xstartup should connect to e.g. gnome-session, mate-session
+tigervnc_desktop_session: gnome-session
 ```
 
 Requirements
