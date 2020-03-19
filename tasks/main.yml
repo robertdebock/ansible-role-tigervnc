@@ -55,6 +55,7 @@
       loop:
         - "systemctl status {{ tigervnc_service }}"
         - "journalctl -xe"
+      failed_when: no
     - name: show collected information
       debug:
         msg: "{{ item }}"
