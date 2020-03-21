@@ -22,8 +22,6 @@ env:
     - image="fedora" tag="30"
     - image="fedora" tag="latest"
     - image="fedora" tag="rawhide"
-    - image="ubuntu" tag="latest"
-    - image="ubuntu" tag="xenial"
 
 cache:
   - pip

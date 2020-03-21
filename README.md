@@ -100,7 +100,7 @@ The following roles can be installed to ensure all requirements are met, using `
 ---
 - robertdebock.bootstrap
 - robertdebock.core_dependencies
-- robertdebock.desktop
+- robertdebock.gnome
 - robertdebock.users
 
 ```
@@ -124,7 +124,6 @@ This role has been tested on these [container images](https://hub.docker.com/):
 |debian|all|
 |el|7, 8|
 |fedora|all|
-|ubuntu|all|
 
 The minimum version of Ansible required is 2.7 but tests have been done to:
 
