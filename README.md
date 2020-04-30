@@ -118,7 +118,7 @@ This role has been tested on these [container images](https://hub.docker.com/):
 |el|7|
 |fedora|all|
 
-The minimum version of Ansible required is 2.7 but tests have been done to:
+The minimum version of Ansible required is 2.8 but tests have been done to:
 
 - The previous version, on version lower.
 - The current version.
