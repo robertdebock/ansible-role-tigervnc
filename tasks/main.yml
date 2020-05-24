@@ -15,6 +15,8 @@
     executable: /bin/bash
   become: yes
   become_user: "{{ tigervnc_username }}"
+  when:
+    - not tigervnc_user_exists
 
 - name: place xvncstartup
   template:
@@ -24,6 +26,17 @@
     mode: "0755"
   notify:
     - restart tigervnc
+
+- name: place config
+  template:
+    src: config
+    dest: "/home/{{ tigervnc_username }}/.vnc/config"
+    owner: "{{ tigervnc_username }}"
+    mode: "0644"
+  notify:
+    - restart tigervnc
+  when:
+    - tigervnc_user_exists
 
 - name: place .Xclients
   copy:
