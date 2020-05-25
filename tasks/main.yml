@@ -8,6 +8,13 @@
   until: tigervnc_install_software is succeeded
   retries: 3
 
+- name: create .vnc directory
+  file: 
+    path: /home/{{ tigervnc_username }}/.vnc
+    owner: "{{ tigervnc_username }}"
+    state: directory
+    mode: 0755
+
 - name: generate vnc password
   shell: set -o pipefail ; printf "{{ tigervnc_password }}\n{{ tigervnc_password }}\n" | vncpasswd
   args:
