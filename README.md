@@ -80,9 +80,12 @@ tigervnc_groupname: vncgroup
 
 # Connecting to tigervnc-server required a password.
 tigervnc_password: vncpass
+# Use existing user's paswword
+tigervnc_user_exists: false
 
 # Desktop session xstartup should connect to e.g. gnome-session, mate-session
 tigervnc_desktop_session: gnome-session
+
 ```
 
 ## Requirements
@@ -110,13 +113,11 @@ Here is an overview of related roles:
 
 ## Compatibility
 
-This role has been tested on these [container images](https://hub.docker.com/):
+This role has been tested on these [container images](https://hub.docker.com/u/robertdebock):
 
 |container|tags|
 |---------|----|
-|el|7|
-|debian|buster, bullseye|
-|fedora|31, 32|
+|fedora|32|
 
 The minimum version of Ansible required is 2.8 but tests have been done to:
 
