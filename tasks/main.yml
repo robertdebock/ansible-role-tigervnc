@@ -12,6 +12,7 @@
   file: 
     path: /home/{{ tigervnc_username }}/.vnc
     owner: "{{ tigervnc_username }}"
+    group: "{{ tigervnc_groupname }}"
     state: directory
     mode: 0755
 
@@ -30,6 +31,7 @@
     src: xstartup
     dest: "/home/{{ tigervnc_username }}/.vnc/xstartup"
     owner: "{{ tigervnc_username }}"
+    group: "{{ tigervnc_groupname }}"
     mode: "0755"
   notify:
     - restart tigervnc
@@ -39,6 +41,7 @@
     src: config
     dest: "/home/{{ tigervnc_username }}/.vnc/config"
     owner: "{{ tigervnc_username }}"
+    group: "{{ tigervnc_groupname }}"
     mode: "0644"
   notify:
     - restart tigervnc
