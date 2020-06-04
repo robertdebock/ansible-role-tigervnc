@@ -2,9 +2,9 @@
 
 Install and configure tigervnc on your system.
 
-|Travis|GitHub|Quality|Downloads|
-|------|------|-------|---------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-tigervnc.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-tigervnc)|[![github](https://github.com/robertdebock/ansible-role-tigervnc/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-tigervnc/actions)|[![quality](https://img.shields.io/ansible/quality/46981)](https://galaxy.ansible.com/robertdebock/tigervnc)|[![downloads](https://img.shields.io/ansible/role/d/46981)](https://galaxy.ansible.com/robertdebock/tigervnc)|
+|Travis|GitHub|Quality|Downloads|Version|
+|------|------|-------|---------|-------|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-tigervnc.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-tigervnc)|[![github](https://github.com/robertdebock/ansible-role-tigervnc/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-tigervnc/actions)|[![quality](https://img.shields.io/ansible/quality/46981)](https://galaxy.ansible.com/robertdebock/tigervnc)|[![downloads](https://img.shields.io/ansible/role/d/46981)](https://galaxy.ansible.com/robertdebock/tigervnc)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-tigervnc.svg)](https://github.com/robertdebock/ansible-role-tigervnc/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
