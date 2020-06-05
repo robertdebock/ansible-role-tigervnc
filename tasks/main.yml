@@ -14,7 +14,7 @@
     owner: "{{ tigervnc_username }}"
     group: "{{ tigervnc_groupname }}"
     state: directory
-    mode: 0755
+    mode: "755"
 
 - name: generate vnc password
   shell: set -o pipefail ; printf "{{ tigervnc_password }}\n{{ tigervnc_password }}\n" | vncpasswd
@@ -32,7 +32,7 @@
     dest: "/home/{{ tigervnc_username }}/.vnc/xstartup"
     owner: "{{ tigervnc_username }}"
     group: "{{ tigervnc_groupname }}"
-    mode: "0755"
+    mode: "755"
   notify:
     - restart tigervnc
 
@@ -42,7 +42,7 @@
     dest: "/home/{{ tigervnc_username }}/.vnc/config"
     owner: "{{ tigervnc_username }}"
     group: "{{ tigervnc_groupname }}"
-    mode: "0644"
+    mode: "644"
   notify:
     - restart tigervnc
   when:
