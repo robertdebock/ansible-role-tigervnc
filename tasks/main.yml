@@ -9,7 +9,7 @@
   retries: 3
 
 - name: create .vnc directory
-  file: 
+  file:
     path: /home/{{ tigervnc_username }}/.vnc
     owner: "{{ tigervnc_username }}"
     group: "{{ tigervnc_groupname }}"
