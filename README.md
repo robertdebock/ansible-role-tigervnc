@@ -85,7 +85,6 @@ tigervnc_user_exists: no
 
 # Desktop session xstartup should connect to e.g. gnome-session, mate-session
 tigervnc_desktop_session: gnome-session
-
 ```
 
 ## [Requirements](#requirements)
