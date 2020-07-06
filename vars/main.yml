@@ -1,5 +1,6 @@
 ---
 # vars file for tigervnc
+
 _tigervnc_packages:
   default:
     - tigervnc-server
