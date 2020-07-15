@@ -59,7 +59,7 @@ For verification `molecule/resources/verify.yml` run after the role has been app
 
     - name: show testing instruction
       debug:
-        msg: "Please run: vncviewer {{ ansible_default_ipv4.address }}:5901"
+        msg: "Please run: vncviewer {{ ansible_default_ipv4.address|default(ansible_all_ipv4_addresses[0]) }}:5901"
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
