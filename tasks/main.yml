@@ -7,9 +7,6 @@
   package:
     name: "{{ tigervnc_packages }}"
     state: present
-  register: tigervnc_install_software
-  until: tigervnc_install_software is succeeded
-  retries: 3
 
 - name: create .vnc directory
   file:
