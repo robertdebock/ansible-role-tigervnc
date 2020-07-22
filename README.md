@@ -116,7 +116,9 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 
 |container|tags|
 |---------|----|
-|fedora|32|
+|el|7|
+|debian|buster, bullseye|
+|fedora|31, 32|
 
 The minimum version of Ansible required is 2.8 but tests have been done to:
 
@@ -168,8 +170,6 @@ Apache-2.0
 
 I'd like to thank everybody that made contributions to this repository. It motivates me, improves the code and is just fun to collaborate.
 
-- [jellevandehaterd](https://github.com/jellevandehaterd)
-- [aindenko](https://github.com/aindenko)
 
 ## [Author Information](#author-information)
 

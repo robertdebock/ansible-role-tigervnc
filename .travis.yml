@@ -14,6 +14,10 @@ env:
   global:
     namespace="robertdebock"
   matrix:
+    - image="centos" tag="7"
+    - image="debian" tag="latest"
+    - image="debian" tag="bullseye"
+    - image="fedora" tag="31"
     - image="fedora" tag="latest"
 
 cache:
