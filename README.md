@@ -41,7 +41,7 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
           group: vncgroup
 ```
 
-For verification `molecule/resources/verify.yml` run after the role has been applied.
+For verification `molecule/resources/verify.yml` runs after the role has been applied.
 ```yaml
 ---
 - name: Verify
@@ -50,9 +50,6 @@ For verification `molecule/resources/verify.yml` run after the role has been app
   gather_facts: yes
 
   tasks:
-    - name: check if connection still works
-      ping:
-
     - name: test port 5901
       wait_for:
         port: 5901
