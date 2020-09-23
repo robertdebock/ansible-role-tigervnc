@@ -60,7 +60,7 @@
   template:
     src: vncserver.service.j2
     dest: /etc/systemd/system/vncserver@.service
-    mode: "0755"
+    mode: "0644"
   notify:
     - systemctl daemon-reload
 
