@@ -64,6 +64,9 @@
   notify:
     - systemctl daemon-reload
 
+- name: flush handlers
+  meta: flush_handlers
+
 - name: start software
   service:
     name: "{{ tigervnc_service }}"
