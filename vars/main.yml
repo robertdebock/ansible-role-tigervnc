@@ -14,6 +14,6 @@ _tigervnc_binary:
   default: /usr/bin/vncserver
   RedHat: /usr/libexec/vncserver
 
-tigervnc_binary: "{{ _tigervnc_binary[ansible_os_family] | default('default') }}"
+tigervnc_binary: "{{ _tigervnc_binary[ansible_os_family] | default(_tigervnc_binary['default']) }}"
 
 tigervnc_service: "vncserver@:1.service"
