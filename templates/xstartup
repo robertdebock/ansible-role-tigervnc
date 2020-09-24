@@ -3,6 +3,6 @@
 unset SESSION_MANAGER
 unset DBUS_SESSION_BUS_ADDRESS
 # makes clipboard working
-/usr/bin/vncconfig -nowin -poll 500 &
+/usr/bin/vncconfig -nowin &
 
 exec {{ tigervnc_desktop_session }}
