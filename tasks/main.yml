@@ -62,7 +62,6 @@
     line: :1={{ tigervnc_username }}
   when:
     - ansible_distribution == "Fedora"
-    - ansible_distribution_major_version | int >= 32
   notify:
     - restart tigervnc
 
