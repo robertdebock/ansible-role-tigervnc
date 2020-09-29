@@ -56,9 +56,18 @@
     group: "{{ tigervnc_groupname }}"
     mode: "a+x"
 
+- name: map users to displays
+  lineinfile:
+    path: /etc/tigervnc/vncserver.users
+    line: :1={{ tigervnc_username }}
+  when:
+    - ansible_distribution == "Fedora"
+  notify:
+    - restart tigervnc
+
 - name: place service unit
   template:
-    src: vncserver.service.j2
+    src: "{{ tigervnc_unitfile_template }}"
     dest: /etc/systemd/system/vncserver@.service
     mode: "0644"
   notify:
