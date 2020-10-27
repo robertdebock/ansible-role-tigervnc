@@ -40,7 +40,11 @@ jobs:
           - image: "debian"
             tag: "bullseye"
           - image: "fedora"
+            tag: "32"
+          - image: "fedora"
             tag: "latest"
+          - image: "fedora"
+            tag: "rawhide"
     steps:
       - name: checkout
         uses: actions/checkout@v2
