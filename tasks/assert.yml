@@ -24,7 +24,7 @@
   assert:
     that:
       - tigervnc_user_exists is defined
-      - tigervnc_user_exists | type_debug == "bool"
+      - tigervnc_user_exists is boolean
     quiet: yes
 
 - name: test if tigervnc_desktop_session is set correctly
