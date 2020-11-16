@@ -3,21 +3,18 @@
   assert:
     that:
       - tigervnc_username is defined
-      - tigervnc_username | length > 0
     quiet: yes
 
 - name: test if tigervnc_groupname is set correctly
   assert:
     that:
       - tigervnc_groupname is defined
-      - tigervnc_groupname | length > 0
     quiet: yes
 
 - name: test if tigervnc_password is set correctly
   assert:
     that:
       - tigervnc_password is defined
-      - tigervnc_password | length > 0
     quiet: yes
 
 - name: test if tigervnc_user_exists is set correctly
@@ -31,5 +28,4 @@
   assert:
     that:
       - tigervnc_desktop_session is defined
-      - tigervnc_desktop_session | length > 0
     quiet: yes
