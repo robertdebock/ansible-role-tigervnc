@@ -1,5 +1,6 @@
 ---
 # handlers file for tigervnc
+
 - name: systemctl daemon-reload
   systemd:
     daemon_reload: yes
@@ -9,3 +10,5 @@
     name: "{{ tigervnc_service }}"
     state: restarted
     daemon_reload: yes
+  when:
+    - not ansible_check_mode | bool
