@@ -1,4 +1,5 @@
 ---
+
 - name: test if tigervnc_username is set correctly
   assert:
     that:
