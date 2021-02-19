@@ -7,12 +7,12 @@
   delegate_to: localhost
 
 - name: install software
-  package:
+  ansible.builtin.package:
     name: "{{ tigervnc_packages }}"
     state: present
 
 - name: create .vnc directory
-  file:
+  ansible.builtin.file:
     path: /home/{{ tigervnc_username }}/.vnc
     owner: "{{ tigervnc_username }}"
     group: "{{ tigervnc_groupname }}"
@@ -20,7 +20,7 @@
     mode: "755"
 
 - name: generate vnc password
-  shell: set -o pipefail ; printf "{{ tigervnc_password }}\n{{ tigervnc_password }}\n" | vncpasswd
+  ansible.builtin.shell: set -o pipefail ; printf "{{ tigervnc_password }}\n{{ tigervnc_password }}\n" | vncpasswd
   args:
     creates: /home/{{ tigervnc_username }}/.vnc/passwd
     executable: /bin/bash
@@ -30,7 +30,7 @@
     - not tigervnc_user_exists
 
 - name: place xvncstartup
-  template:
+  ansible.builtin.template:
     src: xstartup
     dest: "/home/{{ tigervnc_username }}/.vnc/xstartup"
     owner: "{{ tigervnc_username }}"
@@ -40,7 +40,7 @@
     - restart tigervnc
 
 - name: place config
-  template:
+  ansible.builtin.template:
     src: config
     dest: "/home/{{ tigervnc_username }}/.vnc/config"
     owner: "{{ tigervnc_username }}"
@@ -52,7 +52,7 @@
     - tigervnc_user_exists
 
 - name: place .Xclients
-  copy:
+  ansible.builtin.copy:
     content: "{{ tigervnc_desktop_session }}"
     dest: "/home/{{ tigervnc_username }}/.Xclients"
     owner: "{{ tigervnc_username }}"
@@ -60,7 +60,7 @@
     mode: "a+x"
 
 - name: map users to displays
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/tigervnc/vncserver.users
     line: :1={{ tigervnc_username }}
   when:
@@ -69,7 +69,7 @@
     - restart tigervnc
 
 - name: place service unit
-  template:
+  ansible.builtin.template:
     src: "{{ tigervnc_unitfile_template }}"
     dest: /etc/systemd/system/vncserver@.service
     mode: "0644"
@@ -77,10 +77,10 @@
     - systemctl daemon-reload
 
 - name: flush handlers
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: start software
-  service:
+  ansible.builtin.service:
     name: "{{ tigervnc_service }}"
     state: started
     enabled: yes
