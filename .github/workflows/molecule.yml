@@ -34,7 +34,7 @@ jobs:
       matrix:
         config:
           - image: "centos"
-            tag: "7"
+            tag: "latest"
           - image: "debian"
             tag: "latest"
           - image: "debian"
