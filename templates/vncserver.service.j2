@@ -1,0 +1,16 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=Remote desktop service (VNC)
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User={{ tigervnc_username }}
+PIDFile=/var/run/vncsession-%i.pid
+ExecStartPre=-/usr/bin/vncserver -kill %i > /dev/null 2>&1
+ExecStart=/usr/bin/vncserver %i -depth 24 -geometry 1920x1080 -nolisten tcp -localhost
+ExecStop=/usr/bin/vncserver -kill %i
+
+[Install]
+WantedBy=multi-user.target
