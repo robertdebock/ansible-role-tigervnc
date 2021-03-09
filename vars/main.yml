@@ -19,7 +19,7 @@ tigervnc_binary: "{{ _tigervnc_binary[ansible_distribution] | default(_tigervnc_
 _tigervnc_unitfile_template:
   default: vncserver.service.j2
   Fedora: Fedora-vncserver.service.j2
-  RedHat: RedHat-vncserver.service.j2
+  RedHat: RedHat-{{ ansible_distribution_major_version }}-vncserver.service.j2
 
 tigervnc_unitfile_template: "{{ _tigervnc_unitfile_template[ansible_distribution] | default(_tigervnc_unitfile_template[ansible_os_family] | default(_tigervnc_unitfile_template['default'])) }}"
 
