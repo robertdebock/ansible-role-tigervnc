@@ -64,20 +64,9 @@
     path: /etc/tigervnc/vncserver.users
     line: :1={{ tigervnc_username }}
   when:
-    - ansible_distribution == "Fedora"
+    - ansible_distribution in ["CentOS", "Fedora"]
   notify:
     - restart tigervnc
-
-- name: place service unit
-  ansible.builtin.template:
-    src: "{{ tigervnc_unitfile_template }}"
-    dest: /etc/systemd/system/vncserver@.service
-    mode: "0644"
-  notify:
-    - systemctl daemon-reload
-
-- name: flush handlers
-  ansible.builtin.meta: flush_handlers
 
 - name: start software
   ansible.builtin.service:
@@ -85,3 +74,6 @@
     state: started
     enabled: yes
     daemon-reload: yes
+
+- name: flush handlers
+  ansible.builtin.meta: flush_handlers
