@@ -1,11 +1,11 @@
 #!/bin/sh
-{{ ansible_managed | comment }}
-unset SESSION_MANAGER
-unset DBUS_SESSION_BUS_ADDRESS
-# makes clipboard working
-# -poll is not a thing on Debian (latest)
-# /usr/bin/vncconfig -nowin -poll 500 &
-# makes clipboard working
-/usr/bin/vncconfig -nowin &
 
-exec {{ tigervnc_desktop_session }}
+{{ ansible_managed | comment }}
+
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+
+vncconfig -iconic &
+
+dbus-launch --exit-with-session gnome-session &

@@ -5,13 +5,11 @@ Description=Remote desktop service (VNC)
 After=syslog.target network.target
 
 [Service]
-# Type=simple
 Type=forking
 User={{ tigervnc_username }}
-# PIDFile=/var/run/vncsession-%i.pid
-ExecStartPre=-/usr/bin/vncserver -kill %i > /dev/null 2>&1
-ExecStart=/usr/bin/vncserver %i -depth 24 -geometry 1920x1080 -nolisten tcp -localhost
-# ExecStart=/usr/bin/vncserver %i
+Group={{ tigervnc_groupname }}
+ExecStartPre=-/usr/bin/vncserver -kill %i
+ExecStart=/usr/bin/vncserver %i -localhost no
 ExecStop=/usr/bin/vncserver -kill %i
 
 [Install]
