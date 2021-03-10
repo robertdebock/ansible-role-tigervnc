@@ -3,6 +3,9 @@
 unset SESSION_MANAGER
 unset DBUS_SESSION_BUS_ADDRESS
 # makes clipboard working
-/usr/bin/vncconfig -nowin -poll 500 &
+# -poll is not a thing on Debian (latest)
+# /usr/bin/vncconfig -nowin -poll 500 &
+# makes clipboard working
+/usr/bin/vncconfig -nowin &
 
 exec {{ tigervnc_desktop_session }}
