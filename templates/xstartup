@@ -8,4 +8,4 @@
 
 vncconfig -iconic &
 
-dbus-launch --exit-with-session gnome-session &
+dbus-launch --exit-with-session {{ tigervnc_desktop_session }} &
