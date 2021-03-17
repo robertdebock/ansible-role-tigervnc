@@ -120,6 +120,7 @@ I'd like to thank everybody that made contributions to this repository. It motiv
 
 - [jellevandehaterd](https://github.com/jellevandehaterd)
 - [aindenko](https://github.com/aindenko)
+- [hunter-hunter](https://github.com/hunter-hunter)
 
 ## [Author Information](#author-information)
 
