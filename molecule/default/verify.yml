@@ -11,4 +11,4 @@
 
     - name: show testing instruction
       ansible.builtin.debug:
-        msg: "Please run: vncviewer {{ ansible_default_ipv4.address|default(ansible_all_ipv4_addresses[0]) }}:5901"
+        msg: "Please run: vncviewer {{ ansible_default_ipv4.address | default(ansible_all_ipv4_addresses[0]) }}:5901"
