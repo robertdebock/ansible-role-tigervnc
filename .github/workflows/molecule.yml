@@ -34,11 +34,9 @@ jobs:
           - image: "fedora"
             tag: "35"
           - image: "ubuntu"
-            tag: "latest"
+            tag: "bionic"
           - image: "ubuntu"
             tag: "focal"
-          - image: "ubuntu"
-            tag: "bionic"
     steps:
       - name: checkout
         uses: actions/checkout@v3

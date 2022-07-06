@@ -22,11 +22,9 @@ molecule:
       - image: "fedora"
         tag: "35"
       - image: "ubuntu"
-        tag: "latest"
+        tag: "bionic"
       - image: "ubuntu"
         tag: "focal"
-      - image: "ubuntu"
-        tag: "bionic"
 
 galaxy:
   script:
