@@ -31,8 +31,6 @@ jobs:
         config:
           - image: "enterpriselinux"
             tag: "8"
-          - image: "fedora"
-            tag: "35"
           - image: "ubuntu"
             tag: "bionic"
           - image: "ubuntu"
