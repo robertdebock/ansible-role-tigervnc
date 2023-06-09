@@ -5,6 +5,7 @@
     that:
       - tigervnc_username is defined
       - tigervnc_username is string
+      - tigervnc_username is not none
     quiet: yes
 
 - name: assert | Test if tigervnc_groupname is set correctly
@@ -12,6 +13,7 @@
     that:
       - tigervnc_groupname is defined
       - tigervnc_groupname is string
+      - tigervnc_groupname is not none
     quiet: yes
 
 - name: assert | Test if tigervnc_password is set correctly
@@ -19,6 +21,7 @@
     that:
       - tigervnc_password is defined
       - tigervnc_password is string
+      - tigervnc_password is not none
     quiet: yes
 
 - name: assert | Test if tigervnc_user_exists is set correctly
@@ -33,4 +36,5 @@
     that:
       - tigervnc_desktop_session is defined
       - tigervnc_desktop_session is string
+      - tigervnc_desktop_session is not none
     quiet: yes
