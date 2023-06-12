@@ -5,4 +5,4 @@
 repository:
   description: Install and configure tigervnc on your system.
   homepage: https://robertdebock.nl/
-  topics: tigervnc, ansible, molecule, tox, playbook
+  topics: tigervnc, networking, ansible, molecule, tox, playbook
