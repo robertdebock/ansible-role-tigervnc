@@ -1,4 +1,4 @@
-# Ansible role [tigervnc](#tigervnc)
+# [Ansible role tigervnc](#tigervnc)
 
 Install and configure tigervnc on your system.
 
