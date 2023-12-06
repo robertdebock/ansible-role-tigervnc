@@ -35,9 +35,9 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
     - role: robertdebock.core_dependencies
     - role: robertdebock.gnome
     - role: robertdebock.users
-      users_group_list:
+      users_groups:
         - name: vncgroup
-      users_user_list:
+      users:
         - name: vncuser
           sudo_options: "ALL=(ALL) NOPASSWD: ALL"
           group: vncgroup
