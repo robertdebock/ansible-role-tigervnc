@@ -1,0 +1,15 @@
+digraph PhiloDilemma {
+  label = "Robert de Bock" ;
+  overlap=false
+  {
+    "tigervnc" [fillcolor=yellow style=filled penwidth=3]
+    "robertdebock.bootstrap" [fillcolor=green style=filled]
+    "robertdebock.core_dependencies" [fillcolor=green style=filled]
+    "robertdebock.gnome" [fillcolor=green style=filled]
+    "robertdebock.users" [fillcolor=green style=filled]
+  }
+  "tigervnc" -> "robertdebock.bootstrap"
+  "tigervnc" -> "robertdebock.core_dependencies"
+  "tigervnc" -> "robertdebock.gnome"
+  "tigervnc" -> "robertdebock.users"
+}
