@@ -50,7 +50,7 @@
   notify:
     - Restart tigervnc
   when:
-    - ansible_distribution in [ "CentOS", "RedHat", "Rocky" ]
+    - ansible_facts['distribution'] in [ "CentOS", "RedHat", "Rocky" ]
 
 - name: Place .Xclients
   ansible.builtin.copy:
@@ -65,7 +65,7 @@
     path: /etc/tigervnc/vncserver.users
     line: :1={{ tigervnc_username }}
   when:
-    - ansible_os_family == "RedHat"
+    - ansible_facts['os_family'] == "RedHat"
   notify:
     - Restart tigervnc
 
@@ -77,7 +77,7 @@
   notify:
     - Systemctl daemon-reload
   when:
-    - ansible_os_family == "Debian"
+    - ansible_facts['os_family'] == "Debian"
 
 - name: Flush handlers
   ansible.builtin.meta: "flush_handlers"
